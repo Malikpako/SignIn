@@ -3,7 +3,7 @@
 function connectionDB() {
 
     $hostname = 'localhost';            // the credentials of the connection
-    $databasenaam = 'signIn';
+    $databasenaam = 'signin';
     $username = 'root';
     $password = '';
 
