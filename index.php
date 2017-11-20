@@ -1,9 +1,22 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<?php include 'function.php';
+
+if (isset($_POST['hidden'])) {
+    $inloggen = new mysqli('localhost', 'root', '', 'signIn');
+    $Username = $_POST['username'];
+    $Password = $_POST['password'];
+    $sql = "SELECT * FROM `registration` WHERE `username`='" . $Username . "'AND `password`='" . $Password . "'";
+    $result = $conn->query($sql);
+    $num = mysqli_num_rows($result);
+    if ($num == 1) {
+        $extra = 'welcome.php';
+        header("Location: $extra");
+    } else {
+        $extra1 = 'registreren.php';
+        header("Location: $extra1");
+    }
+}
+?>   
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -16,7 +29,7 @@ and open the template in the editor.
 
 <form action="/action_page.php">
   <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
+      <img src="images.png" alt="Avatar" class="avatar">
   </div>
 
   <div class="container">
@@ -35,8 +48,6 @@ and open the template in the editor.
     <span class="psw">Forgot <a href="#">password?</a></span>
   </div>
 </form>
-        <?php
-    
-        ?>
+      
     </body>
 </html>
